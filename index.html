@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>Rock Paper Scissors</title>
+</head>
+<body>
+    <script>
+       function computerPlay () {
+           let options = ['Rock', 'Paper', 'Scissors']
+           let computerSelection = options[Math.floor(Math.random()*options.length)];
+       }
+       
+       function playRound (playerSelection, computerSelection) {
+            let playerSelection = prompt('Rock, paper or scissors?').toLowerCase()
+            if (playersSelection == computerSelection) {
+                alert('It\'s a draw!')
+            };
+       }
+
+
+    </script>
+</body>
