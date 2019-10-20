@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html>
 <head>
     <meta charset="UTF-8">
     <title>Rock Paper Scissors</title>
@@ -10,13 +11,37 @@
            let computerSelection = options[Math.floor(Math.random()*options.length)];
        }
        
-       function playRound (playerSelection, computerSelection) {
-            let playerSelection = prompt('Rock, paper or scissors?').toLowerCase()
-            if (playersSelection == computerSelection) {
-                alert('It\'s a draw!')
-            };
-       }
+       let playerSelection = prompt('Rock, paper or scissors?').toLowerCase()
+       
+       function playRound (playerSelection, computerSelection) {   
+        if (playersSelection == computerSelection) {
+                return 'It\'s a draw!'
+            }
+            
+        else if (playersSelection == 'Rock' && computerPlay == 'Paper') {
+                return 'You lose!'
+            }
 
+         else if (playersSelection == 'Paper' && computerPlay == 'Rock') {
+                return 'You win!'
+            }
+
+        else if (playersSelection == 'Rock' && computerPlay == 'Scissors') {
+                return 'You win!'
+            }
+
+        else if (playersSelection == 'Scissors' && computerPlay == 'Rock') {
+                return 'You lose!'
+            }
+            
+        else if (playersSelection == 'Paper' && computerPlay == 'Scissors') {
+                return 'You lose!'
+            }
+
+           else if (playersSelection == 'Scissors' && computerPlay == 'Paper') {
+                return 'You win!'
+            }}
 
     </script>
 </body>
+</html>
