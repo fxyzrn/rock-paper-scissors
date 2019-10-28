@@ -5,42 +5,82 @@
     <title>Rock Paper Scissors</title>
 </head>
 <body>
+    <button id="button">Play</button>
     <script>
-       function computerPlay () {
-           let options = ['Rock', 'Paper', 'Scissors']
+       function computerPlay() {
+           let options = ['rock', 'paper', 'scissors']
            let computerSelection = options[Math.floor(Math.random()*options.length)];
+           return computerSelection;
+       }
+
+       function startPlay() {
+        let playerSelection = prompt('Rock, paper or scissors?');
+        console.log(playRound(playerSelection, computerPlay), 'current score:' + playerWinsCount + ":" + compWinsCount);
        }
        
-       let playerSelection = prompt('Rock, paper or scissors?').toLowerCase()
+       let playerWinsCount = 0;
+       let compWinsCount = 0;
+
+       function playerWon () {
+        game('player');
+        return 'You win!';
+       }
+
+       function computerWon () {
+        game('comp');
+        return 'You lose!';
+       }
+
        
-       function playRound (playerSelection, computerSelection) {   
-        if (playersSelection == computerSelection) {
-                return 'It\'s a draw!'
+       function playRound (playerSelection, computerPlay) {
+           let computerSelection = computerPlay();
+           console.log('computer chose ' + computerSelection)
+            if (playerSelection == computerSelection) {
+                    return 'It\'s a draw';
+                }
+            
+            else if (playerSelection == 'rock' && computerSelection == 'paper') {
+                    return computerWon();
+                }
+
+            else if (playerSelection == 'paper' && computerSelection == 'rock') {
+                    return playerWon();
+                }
+
+            else if (playerSelection == 'rock' && computerSelection == 'scissors') {
+                    return playerWon();
+                }
+
+            else if (playerSelection == 'scissors' && computerSelection == 'rock') {
+                    return computerWon();
+                }
+            
+            else if (playerSelection == 'paper' && computerSelection == 'scissors') {
+                    return computerWon();
+                }
+
+            else if (playerSelection == 'scissors' && computerSelection == 'paper') {
+                    return playerWon();
+                }
             }
             
-        else if (playersSelection == 'Rock' && computerPlay == 'Paper') {
-                return 'You lose!'
+        function game (winner) {
+            if (playerWinsCount >= 5 || compWinsCount >=5) {
+                console.log('Game over');
+                return;
             }
 
-         else if (playersSelection == 'Paper' && computerPlay == 'Rock') {
-                return 'You win!'
+            if (winner === 'player') {
+                playerWinsCount++
+            } else if (winner === 'comp') {
+                compWinsCount++
             }
+        }
 
-        else if (playersSelection == 'Rock' && computerPlay == 'Scissors') {
-                return 'You win!'
-            }
-
-        else if (playersSelection == 'Scissors' && computerPlay == 'Rock') {
-                return 'You lose!'
-            }
-            
-        else if (playersSelection == 'Paper' && computerPlay == 'Scissors') {
-                return 'You lose!'
-            }
-
-           else if (playersSelection == 'Scissors' && computerPlay == 'Paper') {
-                return 'You win!'
-            }}
+    
+        let button = document.getElementById('button');
+        button.addEventListener('click', startPlay);
+    
 
     </script>
 </body>
